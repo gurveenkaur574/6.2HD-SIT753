@@ -1,0 +1,21 @@
+{
+  "name": "6.2hd-sit753",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.0",
+    "supertest": "^6.1.3"
+  }
+}
+
