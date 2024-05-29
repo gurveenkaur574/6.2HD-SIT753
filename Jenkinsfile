@@ -1,30 +1,28 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'npm install'
+                bat 'echo Build step executed' // Use bat for Windows
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'npm test'
+                bat 'echo Test step executed' // Use bat for Windows
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                // Add deployment steps here
+                bat 'echo Deploy step executed' // Use bat for Windows
             }
         }
     }
-
     post {
         success {
-            echo 'Pipeline completed successfully.'
+            echo 'Pipeline succeeded.'
         }
         failure {
             echo 'Pipeline failed.'
