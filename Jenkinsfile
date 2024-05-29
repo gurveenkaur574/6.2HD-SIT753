@@ -5,55 +5,42 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                bat 'echo Build step executed'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                bat 'echo Test step executed'
-            }
-        }
-        stage('Code Quality Analysis') {
-            steps {
-                echo 'Running code quality analysis...'
-                // Assuming you have SonarQube setup
-                script {
-                    def scannerHome = tool 'SonarQubeScanner'
-                    withSonarQubeEnv('SonarQube') {
-                        bat "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
+                // Add your test commands here, e.g., npm test
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                bat 'echo Deploy step executed'
+                sh 'npm start &'
             }
         }
         stage('Release') {
             steps {
                 echo 'Releasing...'
-                // Add commands for releasing to production
-                bat 'echo Release step executed'
+                // Add your release commands here
             }
         }
         stage('Monitoring and Alerting') {
             steps {
-                echo 'Setting up monitoring and alerting...'
-                // Add commands to set up monitoring
-                bat 'echo Monitoring setup executed'
+                echo 'Monitoring...'
+                // Add your monitoring setup commands here
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline succeeded.'
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline failed!'
         }
     }
 }
+
